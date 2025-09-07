@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">SimpleNotesApp-Team9</string>
+    <string name="app_name">A&amp;D Notes </string>
+    <string name="icono">icono</string>
+    <string name="ContadorNotas">Notas creadas:</string>
+    <string name="textnota">Agregar nota</string>
+    <string name="TextBotonGuardar">Guardar</string>
+    <string name="BotonClear">Clear</string>
 </resources>
