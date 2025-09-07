@@ -1,1 +1,15 @@
-/build
+# Archivos de configuración del IDE (Android Studio, IntelliJ)
+.idea/
+*.iml
+*.hprof
+
+# Archivos de compilación y builds
+build/
+.gradle/
+
+# Archivos locales que no deben ser compartidos
+local.properties
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
