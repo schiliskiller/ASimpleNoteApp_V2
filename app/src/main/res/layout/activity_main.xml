@@ -17,7 +17,7 @@
     <!-- toolbar para darle style B)-->
     <Toolbar
         android:id="@+id/toolbar"
-        android:background="@color/design_default_color_primary"
+        android:background="#b2e2f2"
         android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:titleTextColor="@color/white"
