@@ -3,9 +3,7 @@ package com.example.simplenotesapp_team9;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,13 +20,18 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding bind;
     private int contador_notas = 0;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewmodel = new ViewModelProvider(this).get(NoteViewModel.class);
+        bind      = ActivityMainBinding.inflate(getLayoutInflater());
+
+        EditText InputNota    = bind.textnota;     // entrada de la nota a crear
         TextView notascreadas = bind.notascreadas, // notas creadas
-                 countnotas   = bind.countnotas;   // entrada de la nota a crear
+                 countnotas   = bind.countnotas;   // muestra el conteo de notas creadas
         Button   BotonGuardar = bind.BotonGuardar, // boton Guardar
                  BotonClear   = bind.BotonClear;   // boton Clear
 
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // al tocar el boton Guardar:
         BotonGuardar.setOnClickListener(view -> {
             // se guarda la nota
-            guardarNota(bind.textnota.getText().toString(), notascreadas);
+            guardarNota(InputNota.getText().toString(), notascreadas);
             // se notifica que la nota ha sido guardada
             Toast.makeText(this, "Nota guardada", Toast.LENGTH_SHORT).show();
         });
@@ -76,11 +79,12 @@ public class MainActivity extends AppCompatActivity {
     // aqui almacena la nota a insertar, y por el momento se usan
     // como ID los numeros consecutivos extraidos del conteo de notas
     // y este va incrementando conforme se vayan agregando notas
+    @SuppressLint("SetTextI18n")
     protected void guardarNota(String nota, TextView dest)
     {
         if (dest.getText().toString().isEmpty())
-            dest.setText(String.valueOf(++contador_notas) + " " + nota);
+            dest.setText(++contador_notas + " " + nota);
         else
-            dest.setText(dest.getText().toString() + "\n " + String.valueOf(++contador_notas) + nota);
+            dest.setText(dest.getText().toString() + "\n " + ++contador_notas + nota);
     }
 }
