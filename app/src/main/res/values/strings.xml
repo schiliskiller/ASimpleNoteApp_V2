@@ -4,5 +4,5 @@
     <string name="ContadorNotas">Notas creadas:</string>
     <string name="textnota">Agregar nota</string>
     <string name="TextBotonGuardar">Guardar</string>
-    <string name="BotonClear">Clear</string>
+    <string name="BotonClear">Borrar todo</string>
 </resources>
