@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
 
     <!-- toolbar con background azulito -->
     <Toolbar
@@ -47,23 +49,23 @@
         android:text="@string/ContadorNotas"
         android:textColor="@color/black"
         android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <!-- agregar notas -->
     <EditText
         android:id="@+id/textnota"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:hint="@string/textnota"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:inputType="text"
         android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countnotas" />
 
@@ -72,19 +74,22 @@
         android:id="@+id/notascreadas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BotonGuardar" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/black"
+        android:textSize="14pt"
+        app:layout_constraintStart_toEndOf="@+id/divider3"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
         android:id="@+id/BotonGuardar"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#56818a"
+        android:textColor="@color/white"
         android:text="@string/TextBotonGuardar"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textnota" />
 
@@ -93,11 +98,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/BotonClear"
         android:backgroundTint="#353e45"
+        android:textColor="@color/white"
+        android:text="@string/BotonClear"
+        app:layout_constraintEnd_toStartOf="@+id/divider3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BotonGuardar" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="150dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notascreadas" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
 
 
 
