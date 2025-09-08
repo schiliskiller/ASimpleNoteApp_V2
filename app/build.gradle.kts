@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.lifecycle.viewmodel)
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
