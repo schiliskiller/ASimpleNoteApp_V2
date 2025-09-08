@@ -74,10 +74,14 @@
     <!-- ver notas creadas, textview multilinea -->
     <TextView
         android:id="@+id/notascreadas"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/black"
+        android:textSize="14pt"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BotonGuardar" />
