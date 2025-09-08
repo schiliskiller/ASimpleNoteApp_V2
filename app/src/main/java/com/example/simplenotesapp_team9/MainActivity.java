@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
         EditText InputNota    = bind.textnota;     // entrada de la nota a crear
         TextView notascreadas = bind.notascreadas; // notas creadas
-                 countnotas   = bind.countnotas;   // conteo de notas creadas
         Button   BotonGuardar = bind.BotonGuardar, // boton Guardar
                  BotonClear   = bind.BotonClear;   // boton Clear
+
+        countnotas = bind.countnotas;   // conteo de notas creadas
 
         //cargar datos si ya habían antes
         loadPreferences();
