@@ -8,38 +8,55 @@
     android:background="@color/white">
 
     <!-- toolbar con background azulito -->
-    <androidx.appcompat.widget.Toolbar
+    <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#a2c8cc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/divider"></Toolbar>
 
     <!-- cont de notas creadas -->
-    <TextView
-        android:id="@+id/countnotas"
-        android:layout_width="wrap_content"
+    <!-- agregar notas -->
+    <EditText
+        android:id="@+id/textTitulo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/ContadorNotas"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:hint="Agregar titulo"
+        android:textColorHint="@color/black"
+        android:inputType="text"
         android:textColor="@color/black"
         android:textSize="10pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <!-- agregar notas -->
-    <Button
-        android:id="@+id/BotonClear"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/textCont"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#353e45"
-        android:text="@string/BotonClear"
+        android:layout_marginTop="20dp"
+        android:hint="Agregar descripción"
+        android:autofillHints=""
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="10pt"
+        app:layout_constraintTop_toBottomOf="@id/textnota"/>
+
+    <!-- ver notas creadas, textview multilinea -->
+
+    <Button
+        android:id="@+id/BotonGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:backgroundTint="#56818a"
+        android:text="@string/TextBotonGuardar"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintBottom_toTopOf="@id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -49,26 +66,21 @@
         android:layout_height="1dp"
         android:layout_marginEnd="2dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <View
         android:id="@+id/divider2"
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:layout_marginStart="2dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="100dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

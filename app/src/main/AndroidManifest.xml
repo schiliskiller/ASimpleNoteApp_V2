@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AddNote" android:exported="true"/>
+
     </application>
 
 </manifest>

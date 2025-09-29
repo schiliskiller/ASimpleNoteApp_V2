@@ -3,16 +3,21 @@ package com.example.simplenotesapp_team9;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.simplenotesapp_team9.databinding.ActivityMainBinding;
+import com.example.simplenotesapp_team9.entities.Notas;
+import com.example.simplenotesapp_team9.recyclerview.CustomAdapter;
 import com.example.simplenotesapp_team9.vmodel.NoteViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     private NoteViewModel viewmodel;
@@ -33,10 +38,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(bind.getRoot());
         viewmodel = new ViewModelProvider(this).get(NoteViewModel.class);
 
-        EditText InputNota    = bind.textnota;     // entrada de la nota a crear
-        TextView notascreadas = bind.notascreadas; // notas creadas
-        Button   BotonGuardar = bind.BotonGuardar, // boton Guardar
-                 BotonClear   = bind.BotonClear;   // boton Clear
+        Toolbar     toolbar      = (Toolbar) bind.toolbar;
+        Button      BotonGuardar = bind.BotonGuardar, // boton Guardar
+                    BotonClear   = bind.BotonClear;   // boton Clear
+
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getTitle());
+
+        bind.RV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        bind.RV.setAdapter(new CustomAdapter(viewmodel.notas_creadas, pos -> {
+            Notas nota = viewmodel.notas_creadas.get(pos);
+            Snackbar.make(bind.RV, nota.titulo(), Snackbar.LENGTH_LONG).show();
+        }));
 
         countnotas = bind.countnotas;   // conteo de notas creadas
 
@@ -45,36 +58,16 @@ public class MainActivity extends AppCompatActivity {
 
         // aqui se muestra el conteo de las notas ya creadas y las notas
         countnotas.setText("Notas creadas: " + contador_notas);
-        notascreadas.setText(viewmodel.notas_creadas);
-
-        // al tocar el boton Guardar:
-        BotonGuardar.setOnClickListener(view -> {
-            // se guarda la nota
-            String nota = InputNota.getText().toString();
-            if(!nota.isEmpty())
-            {
-                guardarNota(nota, notascreadas);
-                // vlver a mostrar el conteo notas
-                countnotas.setText("Notas creadas: " + contador_notas);
-                Toast.makeText(this, "Nota guardada :)", Toast.LENGTH_SHORT).show();
-            }
-            else
-                Toast.makeText(this, "INGRESE UNA NOTA >:C", Toast.LENGTH_SHORT).show();
-
-            // se notifica que la nota ha sido guardada
-            InputNota.setText("");
-
-        });
 
         // al tocar el boton Clear:
-        BotonClear.setOnClickListener(view -> {
-            // se borran todas las notas creadas
-            bind.notascreadas.setText("");
-            contador_notas = 0;
-            // se notifica que las notas han sido eliminadas y actualiza el conteo
-            countnotas.setText("Notas creadas: " + contador_notas);
-            Toast.makeText(this, "Notas eliminadas", Toast.LENGTH_SHORT).show();
-        });
+        //BotonClear.setOnClickListener(view -> {
+        //    // se borran todas las notas creadas
+        //    bind.notascreadas.setText("");
+        //    contador_notas = 0;
+        //    // se notifica que las notas han sido eliminadas y actualiza el conteo
+        //    countnotas.setText("Notas creadas: " + contador_notas);
+        //    Toast.makeText(this, "Notas eliminadas", Toast.LENGTH_SHORT).show();
+        //});
     }
 
     // cuando la actividad esta en pausa, se almacenan las notas
@@ -83,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        viewmodel.nota_a_insertar = bind.textnota.getText().toString();
-        viewmodel.notas_creadas   = bind.notascreadas.getText().toString();
     }
 
     // al resumir dicha actividad, se asignan los datos
@@ -93,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        bind.textnota.setText(viewmodel.nota_a_insertar);
-        bind.notascreadas.setText(viewmodel.notas_creadas);
     }
 
     // aqui almacena la nota a insertar, y por el momento se usan
@@ -122,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         //cargar datos a viewmodel
         viewmodel.cont_notas = save.getInt(NOTES_COUNT,0);
-        viewmodel.notas_creadas = save.getString(NOTES_CONTENIDO,"");
+        //viewmodel.notas_creadas = save.getString(NOTES_CONTENIDO,"");
         contador_notas = viewmodel.cont_notas;
     }
 
@@ -132,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         var editor = sharedPreferences.edit();
         viewmodel.cont_notas = contador_notas;
         editor.putInt(NOTES_COUNT, viewmodel.cont_notas);
-        editor.putString(NOTES_CONTENIDO, viewmodel.notas_creadas);
+        //editor.putString(NOTES_CONTENIDO, viewmodel.notas_creadas);
         editor.apply();
     }
 }
