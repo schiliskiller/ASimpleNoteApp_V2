@@ -13,9 +13,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
+        android:id="@+id/noteDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@id/noteTitle"/>
+
+    <TextView
         android:id="@+id/noteCont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/noteTitle"/>
+        android:layout_below="@id/noteDate"/>
 
 </RelativeLayout>

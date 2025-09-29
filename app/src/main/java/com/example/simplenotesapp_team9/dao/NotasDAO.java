@@ -12,6 +12,6 @@ import java.util.List;
 public interface NotasDAO {
     @Insert
     void insertNota(NotasDB nota);
-    @Query("SELECT * FROM nota")
+    @Query("SELECT * FROM notas")
     List<NotasDB> getNotas();
 }

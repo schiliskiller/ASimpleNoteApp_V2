@@ -12,10 +12,6 @@ import com.example.simplenotesapp_team9.R;
 
 import java.util.List;
 
-public interface OnItemSelectListener {
-    void OnItemSelect(int pos);
-}
-
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     private List<Notas> listaNotas;
     private OnItemSelectListener listener;
@@ -42,6 +38,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
 
     @Override
     public int getItemCount() {
-        return listaNotas.size();
+        return listaNotas == null ? 0 : listaNotas.size();
     }
 }
